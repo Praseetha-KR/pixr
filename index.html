@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pixr</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div id="editor">
+        <header>
+            <h1>Pixr // CSS image editor</h1>
+            <div class="input-group flushright">
+                <label for="url">Enter image URL</label>
+                <input type="text" name="url" id="url" />
+            </div>
+        </header>
+        <div class="container">
+            <div id="controls">
+                <div id="control-selector">
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="controlSelector" value="filters" checked>Filters
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="controlSelector" value="blending">Blending
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="filters">
+                    <h4>Filters</h4>
+                    <div class="input-group">
+                        <label for="blur">blur</label>
+                        <input type="range" name="blur" id="blur" min="0" max="20" value="0"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="grayscale">grayscale</label>
+                        <input type="range" name="grayscale" id="grayscale" min="0" max="100" value="0"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="sepia">sepia</label>
+                        <input type="range" name="sepia" id="sepia" min="0" max="100" value="0"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="saturate">saturate</label>
+                        <input type="range" name="saturate" id="saturate" min="0" max="200" value="100"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="hue-rotate">hue rotate</label>
+                        <input type="range" name="hue-rotate" id="hue-rotate" min="0" max="360" value="0"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="invert">invert</label>
+                        <input type="range" name="invert" id="invert" min="0" max="100" value="0"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="opacity">opacity</label>
+                        <input type="range" name="opacity" id="opacity" min="0" max="100" value="100"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="brightness">brightness</label>
+                        <input type="range" name="brightness" id="brightness" min="0" max="200" value="100"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="contrast">contrast</label>
+                        <input type="range" name="contrast" id="contrast" min="0" max="200" value="100"/>
+                    </div>
+                </div>
+                <div id="blending">
+                    <h4>Blending</h4>
+                    <input type="color" id="swatch" value="#e87878">
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="normal" value="normal" checked>Normal
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="multiply" value="multiply">Multiply
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="screen" value="screen">Screen
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="overlay" value="overlay">Overlay
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="darken" value="darken">Darken
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="lighten" value="lighten">Lighten
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="color-dodge" value="color-dodge">Color dodge
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="color-burn" value="color-burn">Color burn
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="hard-light" value="hard-light">Hard light
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="soft-light" value="soft-light">Soft light
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="difference" value="difference">Difference
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="exclusion" value="exclusion">Exclusion
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="hue" value="hue">Hue
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="saturation" value="saturation">Saturation
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="color" value="color">Color
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsBlending" id="luminosity" value="luminosity">Luminosity
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="frame">
+                <img id="photo" src="https://farm4.staticflickr.com/3800/9028663212_e498687698_b.jpg" alt="" />
+                <div id="bg-block"></div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

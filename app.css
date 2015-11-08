@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body, #editor, .container, #controls {
+    height: 100%;
+}
+body {
+    font-family: sans-serif;
+}
+header {
+    position: relative;
+    height: 3em;
+    width: 100%;
+    z-index: 99;
+    background-color: white;
+}
+header * {
+    float: left;
+}
+.container {
+    position: relative;
+    margin-top: -3em;
+    z-index: 3;
+    width: 100%;
+    padding-right: 300px;
+    background-color: #333;
+}
+#controls {
+    width: 300px;
+    background-color: #ccc;
+    z-index: 2;
+    float: right;
+    position: absolute;
+    right: 0;
+    padding: 4em 1em 1em 1em;
+    overflow: auto;
+}
+#frame {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 300px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5em 2em 2em 2em;
+}
+#frame img {
+    max-height: 90%;
+    max-width: 100%;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+.flushright {
+    float: right;
+}
+#filters label {
+    width: 100px;
+    display: inline-block;
+}
+#filters input {
+    width: 150px;
+    display: inline-block;
+}
+#bg-block {
+    background-image: url(https://farm4.staticflickr.com/3800/9028663212_e498687698_b.jpg);
+    width: 80%;
+    height: 80%;
+    background-color: #e87878;
+    background-size: cover;
+    background-position: center center;
+}
