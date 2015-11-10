@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
-    <div id="editor">
+    <div id="editor" class="tab-filters">
         <header>
             <h1>Pixr // CSS image editor</h1>
             <div class="input-group flushright">
@@ -27,7 +27,7 @@
                     <div class="input-group">
                         <div class="radio">
                             <label>
-                                <input type="radio" name="controlSelector" value="blending">Blending
+                                <input type="radio" name="controlSelector" value="bgblending">Blending
                             </label>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <input type="range" name="contrast" id="contrast" min="0" max="200" value="100"/>
                     </div>
                 </div>
-                <div id="blending">
+                <div id="bgblending">
                     <h4>Blending</h4>
                     <input type="color" id="swatch" value="#e87878">
                     <div class="input-group">
@@ -190,8 +190,8 @@
                 </div>
             </div>
             <div id="frame">
-                <img id="photo" src="https://farm4.staticflickr.com/3800/9028663212_e498687698_b.jpg" alt="" />
-                <div id="bg-block"></div>
+                <img id="photo1" src="img.jpg" alt="" />
+                <div id="photo2"></div>
             </div>
         </div>
     </div>

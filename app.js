@@ -1,80 +1,84 @@
 'use strict';
 
-var photo = document.getElementById('photo');
-var bgPhoto = document.getElementById('bg-block');
-var filters = document.getElementById('filters');
-var inputList = filters.getElementsByTagName('input');
-var url = document.getElementById('url');
+// var url = document.getElementById('url');
 
-url.onchange = function() {
-    if (url.value) {
-        photo.src = url.value;
+// url.onchange = function() {
+//     if (url.value) {
+//         photo1.src = url.value;
+//         photo2.style.backgroundImage = 'url(' + url.value + ')';
+//     }
+// };
+
+/*
+    Tab 1 actions
+*/
+function changeFilter(photo) {
+    var filterArr = document.querySelectorAll('#blur, #grayscale, #sepia, #saturate, #hue-rotate, #invert, #opacity, #brightness, #contrast');
+
+    let filterConfig = `blur(${filterArr[0].value}px)
+        grayscale(${filterArr[1].value}%)
+        sepia(${filterArr[2].value}%)
+        saturate(${filterArr[3].value}%)
+        hue-rotate(${filterArr[4].value}deg)
+        invert(${filterArr[5].value}%)
+        opacity(${filterArr[6].value}%)
+        brightness(${filterArr[7].value}%)
+        contrast(${filterArr[8].value}%)`;
+
+    photo.style.filter = filterConfig;
+    photo.style.webkitFilter =  filterConfig;
+    return photo;
+}
+
+function controlfilters() {
+    var filters = document.getElementById('filters');
+    var inputFiltersList = filters.getElementsByTagName('input');
+    for(let i = 0; i < inputFiltersList.length; i++) {
+        inputFiltersList[i].setAttribute('oninput', 'changeFilter(document.getElementById("photo1"))');
     }
-};
+}
 
-var blur = document.getElementById('blur');
-var grayscale = document.getElementById('grayscale');
-var sepia = document.getElementById('sepia');
-var saturate = document.getElementById('saturate');
-var hueRotate = document.getElementById('hue-rotate');
-var invert = document.getElementById('invert');
-var opacity = document.getElementById('opacity');
-var brightness = document.getElementById('brightness');
-var contrast = document.getElementById('contrast');
+/*
+    Tab 2 actions
+*/
 
-for(var i = 0; i < inputList.length; i++) {
-    inputList[i].oninput = function() {
-        var filterConfig = 'blur(' + blur.value + 'px) \
-            grayscale(' + grayscale.value + '%) \
-            sepia(' + sepia.value + '%) \
-            saturate(' + saturate.value + '%) \
-            hue-rotate(' + hueRotate.value + 'deg) \
-            invert(' + invert.value + '%) \
-            opacity(' + opacity.value + '%) \
-            brightness(' + brightness.value + '%) \
-            contrast(' + contrast.value + '%)';
-        photo.style.filter = filterConfig;
-        photo.style.webkitFilter =  filterConfig;
+function changeBgBlending(bg) {
+    var blendMode = document.querySelector('input[name="optionsBlending"]:checked').value;
+    bg.style.backgroundBlendMode = blendMode;
+    return bg;
+}
+
+function controlbgblending() {
+    var bgBlending = document.getElementById('bgblending');
+
+    // Change color swatch bg
+    var swatch = document.getElementById('swatch');
+    var bg = document.getElementById('photo2');
+    swatch.oninput = function() {
+        bg.style.backgroundColor = swatch.value;
     };
+
+    var inputBgBlendingList = bgBlending.getElementsByTagName('input');
+    for(var i = 0; i < inputBgBlendingList.length; i++) {
+        inputBgBlendingList[i].setAttribute('onchange', 'changeBgBlending(document.getElementById("photo2"))');
+    }
 }
 
-var blending = document.getElementById('blending');
-var inputBlendingList = blending.getElementsByTagName('input');
-
-for(var i = 0; i < inputBlendingList.length; i++) {
-    inputBlendingList[i].onchange = function() {
-        var blendingValue = document.querySelector('input[name="optionsBlending"]:checked').value;
-        bgPhoto.style.backgroundBlendMode = blendingValue;
-        (document.getElementById('test')).innerHTML = blendingValue;
-    };
+/*
+    Tab Control
+*/
+function changeTabs(editor) {
+    var ctrlValue = document.querySelector('input[name="controlSelector"]:checked').value;
+    editor.className = '';
+    editor.classList.add('tab-' + ctrlValue);
+    eval('control' + ctrlValue + '()');
 }
-
-var ctrlSelector = document.getElementById('control-selector');
-var inputSelectorList = ctrlSelector.getElementsByTagName('input');
-
-function makeAllInVisible() {
-    (document.getElementById('filters')).style.display = 'none';
-    (document.getElementById('blending')).style.display = 'none';
+function controlTabs() {
+    var ctrlSelector = document.getElementById('control-selector');
+    var inputSelectorList = ctrlSelector.getElementsByTagName('input');
+    controlfilters(); //Initialize tab 1 contents
+    for(var i = 0; i < inputSelectorList.length; i++) {
+        inputSelectorList[i].setAttribute('onchange', 'changeTabs(document.getElementById("editor"))');
+    }
 }
-(document.getElementById('blending')).style.display = 'none';
-bgPhoto.style.display = 'none';
-for(var i = 0; i < inputSelectorList.length; i++) {
-    inputSelectorList[i].onchange = function() {
-        makeAllInVisible();
-        var ctrlValue = document.querySelector('input[name="controlSelector"]:checked').value;
-        (document.getElementById(ctrlValue)).style.display = 'block';
-        if (ctrlValue === 'blending') {
-            photo.style.display = 'none';
-            bgPhoto.style.display = 'block';
-        } else {
-            photo.style.display = 'block';
-            bgPhoto.style.display = 'none';
-        }
-    };
-}
-
-var swatch = document.getElementById('swatch');
-
-swatch.oninput = function() {
-    bgPhoto.style.backgroundColor = swatch.value;
-};
+controlTabs();
