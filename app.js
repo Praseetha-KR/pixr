@@ -6,6 +6,7 @@ url.onchange = function() {
     if (url.value) {
         (document.getElementById('photo1')).src = url.value;
         (document.getElementById('photo2')).style.backgroundImage = 'url(' + url.value + ')';
+        (document.getElementById('photo3')).style.backgroundImage = 'url(' + url.value + ')';
     }
 };
 
@@ -59,7 +60,7 @@ function controlfilters() {
 function changeBgBlend(bg) {
     var blendMode = document.querySelector('input[name="optionsBgBlending"]:checked').value;
     bg.style.backgroundBlendMode = blendMode;
-    var genCode = 'background-blend-mode: ' + blendMode + ';\nbackground-color: ' + document.getElementById('swatch1').value + ';';
+    var genCode = 'background-blend-mode: ' + blendMode + ';\n\tbackground-color: ' + document.getElementById('swatch1').value + ';';
     cssCode('.background-image', genCode);
     return bg;
 }
@@ -87,7 +88,7 @@ function controlbgblend() {
 function changeMixBlend(box) {
     var blendMode = document.querySelector('input[name="optionsMixBlending"]:checked').value;
     box.style.mixBlendMode = blendMode;
-    var genCode = 'mix-blend-mode: ' + blendMode + ';\nbackground-color: ' + document.getElementById('swatch2').value + ';';
+    var genCode = 'mix-blend-mode: ' + blendMode + ';\n\tbackground-color: ' + document.getElementById('swatch2').value + ';';
     cssCode('.box-overlay', genCode);
     return box;
 }
