@@ -26,7 +26,7 @@ resetCssCode();
 function changeFilter(photo) {
     var filterArr = document.querySelectorAll('#blur, #grayscale, #sepia, #saturate, #hue-rotate, #invert, #opacity, #brightness, #contrast');
 
-    let filterConfig = `blur(${filterArr[0].value}px)
+    var filterConfig = `blur(${filterArr[0].value}px)
         grayscale(${filterArr[1].value}%)
         sepia(${filterArr[2].value}%)
         saturate(${filterArr[3].value}%)
@@ -48,7 +48,7 @@ function changeFilter(photo) {
 function controlfilters() {
     var filters = document.getElementById('filters');
     var inputFiltersList = filters.getElementsByTagName('input');
-    for(let i = 0; i < inputFiltersList.length; i++) {
+    for(var i = 0; i < inputFiltersList.length; i++) {
         inputFiltersList[i].setAttribute('oninput', 'changeFilter(document.getElementById("photo1"))');
     }
 }
