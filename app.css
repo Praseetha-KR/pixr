@@ -68,6 +68,11 @@ header * {
 .flushright {
     float: right;
 }
+#url, #code {
+    width: 100%;
+    padding: 0.5em;
+    margin: 0.5em 0 0 0;
+}
 #filters label {
     width: 100px;
     display: inline-block;
@@ -81,21 +86,57 @@ header * {
     height: 100%;
     background-image: url(img.jpg);
     background-color: #e87878;
+    background-size: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+#photo3 {
+    width: 100%;
+    height: 100%;
+    background-image: url(img.jpg);
     background-size: cover;
     background-position: center center;
+    padding: 4em 0;
+}
+#photo3 .box {
+    height: 300px;
+    width: 100%;
+    margin: auto;
+    background-color: #A9E24F;
+    line-height: 300px;
+    vertical-align: middle;
+}
+#photo3 .box h1 {
+    color: white;
 }
 
 
 .tab-filters #filters, .tab-filters #photo1 {
     display: block;
 }
-.tab-filters #bgblending, .tab-filters #photo2 {
+.tab-filters #bgblend, .tab-filters #photo2 {
+    display: none;
+}
+.tab-filters #mixblend, .tab-filters #photo3 {
     display: none;
 }
 
-.tab-bgblending #filters, .tab-bgblending #photo1 {
+.tab-bgblend #filters, .tab-bgblend #photo1 {
     display: none;
 }
-.tab-bgblending #bgblending, .tab-bgblending #photo2 {
+.tab-bgblend #bgblend, .tab-bgblend #photo2 {
+    display: block;
+}
+.tab-bgblend #mixblend, .tab-bgblend #photo3 {
+    display: none;
+}
+
+.tab-mixblend #filters, .tab-mixblend #photo1 {
+    display: none;
+}
+.tab-mixblend #bgblend, .tab-mixblend #photo2 {
+    display: none;
+}
+.tab-mixblend #mixblend, .tab-mixblend #photo3 {
     display: block;
 }

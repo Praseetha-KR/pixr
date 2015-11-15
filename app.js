@@ -9,6 +9,16 @@ url.onchange = function() {
     }
 };
 
+function cssCode(selector, genCode) {
+    var code = document.getElementById('code');
+    code.value = selector + ' {\n\t' + genCode + '\n}';
+    return;
+}
+function resetCssCode() {
+    var code = document.getElementById('code');
+    code.value = '/* update settings to generate styles */';
+}
+resetCssCode();
 /*
     Tab 1 actions
 */
@@ -27,6 +37,10 @@ function changeFilter(photo) {
 
     photo.style.filter = filterConfig;
     photo.style.webkitFilter =  filterConfig;
+
+    var genCode = 'filter: ' + filterConfig +';\n-webkit-filter: ' + filterConfig + ';';
+    cssCode('.image', genCode);
+
     return photo;
 }
 
@@ -42,25 +56,56 @@ function controlfilters() {
     Tab 2 actions
 */
 
-function changeBgBlending(bg) {
-    var blendMode = document.querySelector('input[name="optionsBlending"]:checked').value;
+function changeBgBlend(bg) {
+    var blendMode = document.querySelector('input[name="optionsBgBlending"]:checked').value;
     bg.style.backgroundBlendMode = blendMode;
+    var genCode = 'background-blend-mode: ' + blendMode + ';\nbackground-color: ' + document.getElementById('swatch1').value + ';';
+    cssCode('.background-image', genCode);
     return bg;
 }
 
-function controlbgblending() {
-    var bgBlending = document.getElementById('bgblending');
+function controlbgblend() {
+    var bgBlend = document.getElementById('bgblend');
 
     // Change color swatch bg
-    var swatch = document.getElementById('swatch');
+    var swatch1 = document.getElementById('swatch1');
     var bg = document.getElementById('photo2');
-    swatch.oninput = function() {
-        bg.style.backgroundColor = swatch.value;
+    swatch1.oninput = function() {
+        bg.style.backgroundColor = swatch1.value;
     };
 
-    var inputBgBlendingList = bgBlending.getElementsByTagName('input');
-    for(var i = 0; i < inputBgBlendingList.length; i++) {
-        inputBgBlendingList[i].setAttribute('onchange', 'changeBgBlending(document.getElementById("photo2"))');
+    var inputBgBlendList = bgBlend.getElementsByTagName('input');
+    for(var i = 0; i < inputBgBlendList.length; i++) {
+        inputBgBlendList[i].setAttribute('onchange', 'changeBgBlend(document.getElementById("photo2"))');
+    }
+}
+
+/*
+    Tab 3 actions
+*/
+
+function changeMixBlend(box) {
+    var blendMode = document.querySelector('input[name="optionsMixBlending"]:checked').value;
+    box.style.mixBlendMode = blendMode;
+    var genCode = 'mix-blend-mode: ' + blendMode + ';\nbackground-color: ' + document.getElementById('swatch2').value + ';';
+    cssCode('.box-overlay', genCode);
+    return box;
+}
+
+function controlmixblend() {
+    var mixBlend = document.getElementById('mixblend');
+
+    // Change color swatch bg
+    var swatch2 = document.getElementById('swatch2');
+    var bg = document.getElementById('photo3');
+    var box = bg.querySelector('.box');
+    swatch2.oninput = function() {
+        box.style.backgroundColor = swatch2.value;
+    };
+
+    var inputMixBlendList = mixBlend.getElementsByTagName('input');
+    for(var i = 0; i < inputMixBlendList.length; i++) {
+        inputMixBlendList[i].setAttribute('onchange', 'changeMixBlend(document.querySelector(".box"))');
     }
 }
 
@@ -72,6 +117,7 @@ function changeTabs(editor) {
     editor.className = '';
     editor.classList.add('tab-' + ctrlValue);
     eval('control' + ctrlValue + '()');
+    resetCssCode();
 }
 function controlTabs() {
     var ctrlSelector = document.getElementById('control-selector');
