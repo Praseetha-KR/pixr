@@ -1,13 +1,13 @@
 'use strict';
 
-// var url = document.getElementById('url');
+var url = document.getElementById('url');
 
-// url.onchange = function() {
-//     if (url.value) {
-//         photo1.src = url.value;
-//         photo2.style.backgroundImage = 'url(' + url.value + ')';
-//     }
-// };
+url.onchange = function() {
+    if (url.value) {
+        (document.getElementById('photo1')).src = url.value;
+        (document.getElementById('photo2')).style.backgroundImage = 'url(' + url.value + ')';
+    }
+};
 
 /*
     Tab 1 actions

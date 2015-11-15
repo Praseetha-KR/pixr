@@ -15,9 +15,22 @@ header {
     width: 100%;
     z-index: 99;
     background-color: white;
+    padding: 0 1em;
 }
 header * {
     float: left;
+    display: inline-block;
+    line-height: 3em;
+    vertical-align: middle;
+}
+.main {
+    color: #E36F27;
+}
+.sub {
+    color: #c1c1c1;
+    font-weight: 100;
+    font-size: 0.8em;
+    line-height: 3.9;
 }
 .container {
     position: relative;
